@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <h1>Essay Generator Form</h1>
+  <h2>Please fill out the details down below to generate your essay.</h2>
+  
+  <form id="genForm" method="POST" action="" role="form">
+           {{ form.csrf_token }}
+            <div class="form-group">
+                {{form.first_name.label}}
+                {{form.first_name(placeholder="John", class_="form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.last_name.label}}
+                {{form.last_name(placeholder="Doe", class_="form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.overall_argument.label}}
+                {{form.overall_argument(placeholder="Pizza is good", class_="form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.first_para.label}}
+                {{form.first_para(placeholder="pizza is healthy", class_="form-control")}}
+            </div>
+            <div class="form-group">
+                {{form.second_para.label}}
+                {{form.second_para(placeholder="studies show pizza makes you happier", class_="form-control")}}
+            </div>
+            <p><input type="submit" value="Submit"></p>
+  </form>
+
+  {% if essay is defined %}
+    <h3>Here is your generated essay:</h3>
+    <p>{{ essay }}</p>
+  {% endif %}
+
+{% endblock %}
